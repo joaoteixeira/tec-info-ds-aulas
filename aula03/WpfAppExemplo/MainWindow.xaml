@@ -5,14 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfAppExemplo"
         mc:Ignorable="d"
-        Title="Cadastro de pessoas" Height="500" Width="800">
+        Title="Cadastro de pessoas" Height="320" Width="600" WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="180"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Column="0" Margin="0 10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Text="Cadastro de Pessoas" 
+                   FontSize="30" Background="BurlyWood"
+                   Padding="10 13 10 0"/>
+
+        <StackPanel Grid.Row="1" Grid.Column="0" Margin="0 10">
             <Label Content="Nome:" HorizontalAlignment="Right" Margin="0 4 0 0"/>
             <Label Content="Data de Nascimento:" HorizontalAlignment="Right" Margin="0 4 0 0"/>
             <Label Content="CPF:" HorizontalAlignment="Right" Margin="0 4 0 0"/>
@@ -20,7 +30,7 @@
             <Label Content="Whatsapp:" HorizontalAlignment="Right" Margin="0 3 0 0"/>
         </StackPanel>
 
-        <StackPanel Grid.Column="1" Margin="10">
+        <StackPanel Grid.Row="1" Grid.Column="1" Margin="10">
             <TextBox Height="25"/>
             <TextBox Height="25" Margin="0 5 0 0"/>
             <TextBox Height="25" Margin="0 5 0 0"/>
