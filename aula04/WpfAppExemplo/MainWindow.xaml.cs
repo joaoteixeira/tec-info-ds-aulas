@@ -41,6 +41,12 @@ namespace WpfAppExemplo
                 $"CPF: {cpf}\n" +
                 $"E-mail: {email}\n" +
                 $"Whatsapp: {telefone}");
+
+            txtNome.Text = "";
+            txtDataNasc.Text = "";
+            txtCPF.Text = "";
+            txtEmail.Text = "";
+            txtTelefone.Text = "";
         }
     }
 }
