@@ -42,6 +42,11 @@ namespace WpfAppExemplo
                 $"E-mail: {email}\n" +
                 $"Whatsapp: {telefone}");
 
+            ClearTextBox();
+        }
+
+        private void ClearTextBox()
+        {
             txtNome.Text = "";
             txtDataNasc.Text = "";
             txtCPF.Text = "";
