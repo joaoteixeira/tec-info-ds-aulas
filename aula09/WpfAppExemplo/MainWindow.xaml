@@ -35,7 +35,6 @@
                 <MenuItem Header="_Sobre">
                     <MenuItem Header="_Versão" Click="mnuVersao_Click"/>
                 </MenuItem>
-
             </Menu>
 
             <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Text="Cadastro de Pessoas" 
@@ -47,8 +46,6 @@
             <Label Content="Nome:" HorizontalAlignment="Right" Margin="0 4 0 0"/>
             <Label Content="Data de Nascimento:" HorizontalAlignment="Right" Margin="0 4 0 0"/>
             <Label Content="Sexo:" HorizontalAlignment="Right" Margin="0 4 0 0"/>
-
-
             <Label Content="Tem filhos?" HorizontalAlignment="Right" Margin="0 0 0 0"/>
             <Label Content="CPF:" HorizontalAlignment="Right" Margin="0 4 0 0"/>
             <Label Content="E-mail:" HorizontalAlignment="Right" Margin="0 4 0 0"/>
@@ -66,12 +63,13 @@
 
             <CheckBox Content="Tem filhos" x:Name="cbFilhos" Checked="CBFilhos_Checked" Unchecked="CBFilhos_Checked"/>
 
-            <wpfTool:MaskedTextBox x:Name="txtCPF"  Height="25" Margin="0 5 0 0" Mask="000\.000\.000-00" />
-            <TextBox x:Name="txtEmail" Height="25" Margin="0 5 0 0"/>
-            <wpfTool:MaskedTextBox x:Name="txtTelefone"  Height="25" Margin="0 5 0 0" Mask="(00) 0 0000-0000" />
-
-            <TextBlock x:Name="txtInfoSexo"/>
+            <wpfTool:MaskedTextBox x:Name="txtCPF"  Height="25" Margin="0 5 0 0" Mask="000\.000\.000-00" PreviewLostKeyboardFocus="txtCPF_LostFocus" />
+            <TextBlock x:Name="txtCPF_Error" Text="CPF inválido" Foreground="Red" Visibility="Collapsed" />
             
+            <TextBox x:Name="txtEmail" Height="25" Margin="0 5 0 0" PreviewLostKeyboardFocus="txtEmail_LostFocus"/>
+            <TextBlock x:Name="txtEmail_Error" Text="E-mail inválido" Foreground="Red" Visibility="Collapsed" />
+
+            <wpfTool:MaskedTextBox x:Name="txtTelefone"  Height="25" Margin="0 5 0 0" Mask="(00) 0 0000-0000" />
 
             <Button x:Name="btnSalvar" Margin="0 5 0 0" Height="40" Click="btnSalvar_Click">Salvar informações</Button>
         </StackPanel>

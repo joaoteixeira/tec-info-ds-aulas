@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -88,6 +89,38 @@ namespace WpfAppExemplo
                 pessoa.TemFilhos = true;
             else
                 pessoa.TemFilhos = false;
+        }
+
+        private void txtEmail_LostFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+
+            string email = txtEmail.Text.Trim();
+
+            if (!Util.IsEmail(email))
+            {
+                e.Handled = true;
+                txtEmail_Error.Visibility = Visibility.Visible;
+                txtEmail.Focus();
+            }
+            else
+                txtEmail_Error.Visibility = Visibility.Collapsed;
+
+        }
+
+        private void txtCPF_LostFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+
+            string cpf = txtCPF.Text.Trim();
+
+            if (!Util.IsCPF(cpf))
+            {
+                e.Handled = true;
+                txtCPF_Error.Visibility = Visibility.Visible;
+                txtCPF.Focus();
+            }
+            else
+                txtCPF_Error.Visibility = Visibility.Collapsed;
+
         }
     }
 }
