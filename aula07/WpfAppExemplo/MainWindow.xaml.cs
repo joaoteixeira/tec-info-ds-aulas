@@ -40,7 +40,7 @@ namespace WpfAppExemplo
                 $"Data de Nascimento: {data_nasc}\n" +
                 $"CPF: {cpf}\n" +
                 $"E-mail: {email}\n" +
-                $"Whatsapp: {telefone}");
+                $"Whatsapp: {telefone}", "Informações");
 
             ClearTextBox();
         }
