@@ -61,5 +61,12 @@ namespace WpfAppExemplo
             if (result == MessageBoxResult.Yes)
                 this.Close();
         }
+
+        private void mnuVersao_Click(object sender, RoutedEventArgs e)
+        {
+            VersionDialog vsDialog = new VersionDialog();
+            vsDialog.ShowDialog();
+        }
+
     }
 }
