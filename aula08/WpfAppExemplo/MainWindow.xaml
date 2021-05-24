@@ -6,8 +6,8 @@
         xmlns:local="clr-namespace:WpfAppExemplo"
         xmlns:wpfTool="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
         mc:Ignorable="d"
-        Title="Cadastro de pessoas" Height="320" Width="600" WindowStartupLocation="CenterScreen"
-        ResizeMode="NoResize">
+        Title="Cadastro de pessoas" Height="600" Width="600" WindowStartupLocation="CenterScreen"
+        >
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="180"/>
@@ -42,10 +42,14 @@
                    FontSize="30" Background="BurlyWood"
                    Padding="10 13 10 0"/>
         </StackPanel>
-        
+
         <StackPanel Grid.Row="1" Grid.Column="0" Margin="0 10">
             <Label Content="Nome:" HorizontalAlignment="Right" Margin="0 4 0 0"/>
             <Label Content="Data de Nascimento:" HorizontalAlignment="Right" Margin="0 4 0 0"/>
+            <Label Content="Sexo:" HorizontalAlignment="Right" Margin="0 4 0 0"/>
+
+
+            <Label Content="Tem filhos?" HorizontalAlignment="Right" Margin="0 0 0 0"/>
             <Label Content="CPF:" HorizontalAlignment="Right" Margin="0 4 0 0"/>
             <Label Content="E-mail:" HorizontalAlignment="Right" Margin="0 4 0 0"/>
             <Label Content="Whatsapp:" HorizontalAlignment="Right" Margin="0 3 0 0"/>
@@ -54,9 +58,21 @@
         <StackPanel Grid.Row="1" Grid.Column="1" Margin="10">
             <wpfTool:WatermarkTextBox  x:Name="txtNome" Height="25" Watermark="Digite o Nome Completo"/>
             <DatePicker x:Name="txtDataNasc" Height="25" Margin="0 5 0 0"/>
+
+            <StackPanel Margin="0 15 0 10" Orientation="Horizontal">
+                <RadioButton Content="Masculino" Margin="0 0 30 0" Checked="RBSexo_Checked" />
+                <RadioButton Content="Feminino" Checked="RBSexo_Checked"/>
+            </StackPanel>
+
+            <CheckBox Content="Tem filhos" x:Name="cbFilhos" Checked="CBFilhos_Checked" Unchecked="CBFilhos_Checked"/>
+
             <wpfTool:MaskedTextBox x:Name="txtCPF"  Height="25" Margin="0 5 0 0" Mask="000\.000\.000-00" />
             <TextBox x:Name="txtEmail" Height="25" Margin="0 5 0 0"/>
             <wpfTool:MaskedTextBox x:Name="txtTelefone"  Height="25" Margin="0 5 0 0" Mask="(00) 0 0000-0000" />
+
+            <TextBlock x:Name="txtInfoSexo"/>
+            
+
             <Button x:Name="btnSalvar" Margin="0 5 0 0" Height="40" Click="btnSalvar_Click">Salvar informações</Button>
         </StackPanel>
 

@@ -20,6 +20,8 @@ namespace WpfAppExemplo
     /// </summary>
     public partial class MainWindow : Window
     {
+        private Pessoa pessoa = new Pessoa();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -29,18 +31,23 @@ namespace WpfAppExemplo
         {
             string nome, data_nasc, cpf, email, telefone;
 
-            nome = txtNome.Text;
+            pessoa.Nome = txtNome.Text;
             data_nasc = txtDataNasc.Text;
             cpf = txtCPF.Text;
             email = txtEmail.Text;
             telefone = txtTelefone.Text;
 
 
-            MessageBox.Show($"Nome: {nome}\n" +
+            string filhos = pessoa.TemFilhos ? "Sim" : "Não";
+
+
+            MessageBox.Show($"Nome: {pessoa.Nome}\n" +
                 $"Data de Nascimento: {data_nasc}\n" +
                 $"CPF: {cpf}\n" +
                 $"E-mail: {email}\n" +
-                $"Whatsapp: {telefone}", "Informações");
+                $"Whatsapp: {telefone}\n" +
+                $"Sexo: {pessoa.Sexo}\n" +
+                $"Filhos? {filhos}", "Informações", MessageBoxButton.OK, MessageBoxImage.Information);
 
             ClearTextBox();
         }
@@ -68,5 +75,19 @@ namespace WpfAppExemplo
             vsDialog.ShowDialog();
         }
 
+        private void RBSexo_Checked(object sender, RoutedEventArgs e)
+        {
+            RadioButton rb = (sender as RadioButton);
+
+            pessoa.Sexo = rb.Content.ToString();
+        }
+
+        private void CBFilhos_Checked(object sender, RoutedEventArgs e)
+        {
+            if (cbFilhos.IsChecked == true)
+                pessoa.TemFilhos = true;
+            else
+                pessoa.TemFilhos = false;
+        }
     }
 }
