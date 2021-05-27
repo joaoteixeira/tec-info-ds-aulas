@@ -23,7 +23,7 @@ namespace WpfAppExemplo
     {
         private Pessoa pessoa;
 
-        private List<string> estados;
+        private List<Estado> estados;
 
         public MainWindow()
         {
@@ -34,12 +34,11 @@ namespace WpfAppExemplo
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
             pessoa = new Pessoa();
-            estados = new List<string>();
+            estados = new List<Estado>();
 
-            estados.Add("Acre");
-            estados.Add("Amapá");
-            estados.Add("Rondônia");
-            estados.Add("Mato Grosso");
+            estados.Add(new Estado() { Id=1, Nome="Rondônia", Sigla="RO" } );
+            estados.Add(new Estado() { Id=2, Nome="ACRE", Sigla="AC" } );
+            estados.Add(new Estado() { Id=3, Nome="Mato Grosso", Sigla="MT" } );
 
             cmbEstado.ItemsSource = estados;
         }
@@ -65,7 +64,7 @@ namespace WpfAppExemplo
                 $"Whatsapp: {telefone}\n" +
                 $"Sexo: {pessoa.Sexo}\n" +
                 $"Filhos? {filhos}\n" +
-                $"Estado: {pessoa.Estado}", "Informações", MessageBoxButton.OK, MessageBoxImage.Information);
+                $"Estado: {pessoa.Estado.Nome}/{pessoa.Estado.Sigla}", "Informações", MessageBoxButton.OK, MessageBoxImage.Information);
 
             ClearTextBox();
         }
@@ -143,7 +142,12 @@ namespace WpfAppExemplo
         private void cmbEstado_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
-            pessoa.Estado = cmbEstado.SelectedItem.ToString();
+            pessoa.Estado = cmbEstado.SelectedItem as Estado;
+
+            //MessageBox.Show($"Estado: {item.Nome}\nSigla: {item.Sigla}\nID: {item.Id}");
+            
+            
+            //pessoa.Estado = cmbEstado.SelectedItem.ToString();
 
             //MessageBox.Show("Estado selecionado: " + item);
         }

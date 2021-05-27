@@ -72,7 +72,8 @@
 
             <wpfTool:MaskedTextBox x:Name="txtTelefone"  Height="25" Margin="0 5 0 0" Mask="(00) 0 0000-0000" />
 
-            <ComboBox x:Name="cmbEstado" SelectionChanged="cmbEstado_SelectionChanged" />
+            <ComboBox x:Name="cmbEstado" SelectionChanged="cmbEstado_SelectionChanged"
+                      DisplayMemberPath="Nome" SelectedValuePath="Id"/>
 
             <Button x:Name="btnSalvar" Margin="0 5 0 0" Height="40" Click="btnSalvar_Click">Salvar informações</Button>
             
