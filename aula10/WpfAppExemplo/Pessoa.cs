@@ -10,6 +10,8 @@ namespace WpfAppExemplo
 
         public string Sexo { get; set; }
 
+        public string Estado { get; set; }
+
         public bool TemFilhos { get; set; }
     }
 }

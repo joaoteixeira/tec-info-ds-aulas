@@ -50,6 +50,7 @@
             <Label Content="CPF:" HorizontalAlignment="Right" Margin="0 4 0 0"/>
             <Label Content="E-mail:" HorizontalAlignment="Right" Margin="0 4 0 0"/>
             <Label Content="Whatsapp:" HorizontalAlignment="Right" Margin="0 3 0 0"/>
+            <Label Content="Estado:" HorizontalAlignment="Right" Margin="0 0 0 0"/>
         </StackPanel>
 
         <StackPanel Grid.Row="1" Grid.Column="1" Margin="10">
@@ -65,13 +66,16 @@
 
             <wpfTool:MaskedTextBox x:Name="txtCPF"  Height="25" Margin="0 5 0 0" Mask="000\.000\.000-00" PreviewLostKeyboardFocus="txtCPF_LostFocus" />
             <TextBlock x:Name="txtCPF_Error" Text="CPF inválido" Foreground="Red" Visibility="Collapsed" />
-            
+
             <TextBox x:Name="txtEmail" Height="25" Margin="0 5 0 0" PreviewLostKeyboardFocus="txtEmail_LostFocus"/>
             <TextBlock x:Name="txtEmail_Error" Text="E-mail inválido" Foreground="Red" Visibility="Collapsed" />
 
             <wpfTool:MaskedTextBox x:Name="txtTelefone"  Height="25" Margin="0 5 0 0" Mask="(00) 0 0000-0000" />
 
+            <ComboBox x:Name="cmbEstado" SelectionChanged="cmbEstado_SelectionChanged" />
+
             <Button x:Name="btnSalvar" Margin="0 5 0 0" Height="40" Click="btnSalvar_Click">Salvar informações</Button>
+            
         </StackPanel>
 
     </Grid>

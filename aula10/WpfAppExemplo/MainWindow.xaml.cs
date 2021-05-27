@@ -21,11 +21,27 @@ namespace WpfAppExemplo
     /// </summary>
     public partial class MainWindow : Window
     {
-        private Pessoa pessoa = new Pessoa();
+        private Pessoa pessoa;
+
+        private List<string> estados;
 
         public MainWindow()
         {
             InitializeComponent();
+            Loaded += MainWindow_Loaded;
+        }
+
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            pessoa = new Pessoa();
+            estados = new List<string>();
+
+            estados.Add("Acre");
+            estados.Add("Amapá");
+            estados.Add("Rondônia");
+            estados.Add("Mato Grosso");
+
+            cmbEstado.ItemsSource = estados;
         }
 
         private void btnSalvar_Click(object sender, RoutedEventArgs e)
@@ -48,7 +64,8 @@ namespace WpfAppExemplo
                 $"E-mail: {email}\n" +
                 $"Whatsapp: {telefone}\n" +
                 $"Sexo: {pessoa.Sexo}\n" +
-                $"Filhos? {filhos}", "Informações", MessageBoxButton.OK, MessageBoxImage.Information);
+                $"Filhos? {filhos}\n" +
+                $"Estado: {pessoa.Estado}", "Informações", MessageBoxButton.OK, MessageBoxImage.Information);
 
             ClearTextBox();
         }
@@ -121,6 +138,14 @@ namespace WpfAppExemplo
             else
                 txtCPF_Error.Visibility = Visibility.Collapsed;
 
+        }
+
+        private void cmbEstado_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+            pessoa.Estado = cmbEstado.SelectedItem.ToString();
+
+            //MessageBox.Show("Estado selecionado: " + item);
         }
     }
 }
