@@ -73,9 +73,25 @@
             </Menu>
         </StackPanel>
 
-        <StackPanel DockPanel.Dock="Bottom">
-            <TextBlock>RODAPÉ</TextBlock>
-        </StackPanel>
+        <Grid DockPanel.Dock="Bottom">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+
+            <StackPanel Grid.Column="0" Orientation="Horizontal">
+                <TextBlock FontWeight="Bold" Padding="5">Usuário Logado:</TextBlock>
+                <TextBlock Padding="0 5">João Teixeira</TextBlock>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                <TextBlock FontWeight="Bold" Padding="5">Data:</TextBlock>
+                <TextBlock x:Name="txtDataAtual" Padding="0 5 5 5"/>
+            </StackPanel>
+
+        </Grid>
+        
 
         <Grid>
             <TextBlock>CENTRO</TextBlock>

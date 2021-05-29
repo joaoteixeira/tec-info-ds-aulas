@@ -23,6 +23,12 @@ namespace SpaceSistemas
         public MainWindow()
         {
             InitializeComponent();
+            Loaded += MainWindow_Loaded;
+        }
+
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            txtDataAtual.Text = DateTime.Now.ToString("dd/MM/yyyy");
         }
     }
 }
