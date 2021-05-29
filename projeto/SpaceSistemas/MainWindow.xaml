@@ -78,8 +78,7 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-
-
+            
             <StackPanel Grid.Column="0" Orientation="Horizontal">
                 <TextBlock FontWeight="Bold" Padding="5">Usuário Logado:</TextBlock>
                 <TextBlock Padding="0 5">João Teixeira</TextBlock>
@@ -92,11 +91,10 @@
 
         </Grid>
         
-
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
-                <RowDefinition/>
+                <RowDefinition Height="auto"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
@@ -136,7 +134,27 @@
                     </StackPanel>
                 </Border>
             </WrapPanel>
-            
+
+            <TextBlock Grid.Row="1" Text="Últimas Vendas" FontSize="20" Margin="5 5"/>
+
+            <DataGrid Grid.Row="2" Margin="5" x:Name="dataGridVendas" IsReadOnly="true"
+                      AutoGenerateColumns="False" AlternatingRowBackground="#FFE5E5E5" AlternationCount="2">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
+                    <DataGridTextColumn Header="Nome do Cliente" Binding="{Binding Cliente}"/>
+                    <DataGridTextColumn Header="Qtd. Produtos" Binding="{Binding QuantidadeProdutos}"/>
+                    <DataGridTextColumn Header="Total" Binding="{Binding ValorTotal, ConverterCulture='pt-BR', StringFormat=C}"/>
+
+                    <DataGridTemplateColumn Header="Ações">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Margin="2" Padding="5">Visualizar venda</Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+
         </Grid>
     </DockPanel>
 </Window>
