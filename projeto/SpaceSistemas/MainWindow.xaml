@@ -5,10 +5,45 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SpaceSistemas"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Space Sistemas" Height="450" Width="800">
     <DockPanel>
-        <StackPanel DockPanel.Dock="Left" Width="200">
-            <TextBlock>MENU</TextBlock>          
+        <StackPanel DockPanel.Dock="Left" Width="160" Margin="5 0">
+            <Image Source="/Imagens/logo.jpg" Margin="0 5"/>
+            
+            <Button Margin="0 2">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock FontSize="14" Padding="10">Clientes</TextBlock>
+                    <Image Source="/Imagens/clientes.png" Width="28" />
+                </StackPanel>
+            </Button>
+            
+            <Button Margin="0 2">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock FontSize="14" Padding="10">Produtos</TextBlock>
+                    <Image Source="/Imagens/produtos.png" Width="28" />
+                </StackPanel>
+            </Button>
+
+            <Button Margin="0 2">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock FontSize="14" Padding="10">Vendas</TextBlock>
+                    <Image Source="/Imagens/vendas.png" Width="28" />
+                </StackPanel>
+            </Button>
+
+            <Button Margin="0 2">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock FontSize="14" Padding="10">Relatórios</TextBlock>
+                    <Image Source="/Imagens/relatorios.png" Width="28" />
+                </StackPanel>
+            </Button>
+
+            <Button Margin="0 2">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock FontSize="14" Padding="10">Usuários</TextBlock>
+                    <Image Source="/Imagens/usuarios.png" Width="28" />
+                </StackPanel>
+            </Button>
         </StackPanel>
 
         <StackPanel DockPanel.Dock="Top">

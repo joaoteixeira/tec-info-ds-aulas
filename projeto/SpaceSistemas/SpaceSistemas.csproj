@@ -6,4 +6,34 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Imagens\clientes.png" />
+    <None Remove="Imagens\logo.jpg" />
+    <None Remove="Imagens\produtos.png" />
+    <None Remove="Imagens\relatorios.png" />
+    <None Remove="Imagens\usuarios.png" />
+    <None Remove="Imagens\vendas.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Imagens\clientes.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagens\logo.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagens\produtos.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagens\relatorios.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagens\usuarios.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagens\vendas.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>
