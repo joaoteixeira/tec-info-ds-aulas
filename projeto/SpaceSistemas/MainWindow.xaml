@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SpaceSistemas"
         mc:Ignorable="d"
-        Title="Space Sistemas" Height="450" Width="800">
+        Title="Space Sistemas" MinHeight="700" MinWidth="1350" WindowStartupLocation="CenterScreen">
     <DockPanel>
         <StackPanel DockPanel.Dock="Left" Width="160" Margin="5 0">
             <Image Source="/Imagens/logo.jpg" Margin="0 5"/>
@@ -94,7 +94,49 @@
         
 
         <Grid>
-            <TextBlock>CENTRO</TextBlock>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <WrapPanel>
+                <Border Width="160" Background="#FFE5E5E5" CornerRadius="5" Padding="5" Margin="2 5">
+                    <StackPanel>
+                        <TextBlock FontSize="30" HorizontalAlignment="Center">45</TextBlock>
+                        <TextBlock FontSize="20" HorizontalAlignment="Center">Vendas</TextBlock>
+                    </StackPanel>
+                </Border>
+
+                <Border Width="160" Background="#FFE5E5E5" CornerRadius="5" Padding="5" Margin="2 5">
+                    <StackPanel>
+                        <TextBlock FontSize="30" HorizontalAlignment="Center">45</TextBlock>
+                        <TextBlock FontSize="20" HorizontalAlignment="Center">Clientes</TextBlock>
+                    </StackPanel>
+                </Border>
+
+                <Border Width="160" Background="#FFE5E5E5" CornerRadius="5" Padding="5" Margin="2 5">
+                    <StackPanel>
+                        <TextBlock FontSize="30" HorizontalAlignment="Center">45</TextBlock>
+                        <TextBlock FontSize="20" HorizontalAlignment="Center">Produtos</TextBlock>
+                    </StackPanel>
+                </Border>
+
+                <Border Width="160" Background="#FFE5E5E5" CornerRadius="5" Padding="5" Margin="2 5">
+                    <StackPanel>
+                        <TextBlock FontSize="30" HorizontalAlignment="Center">45</TextBlock>
+                        <TextBlock FontSize="20" HorizontalAlignment="Center">Fornecedores</TextBlock>
+                    </StackPanel>
+                </Border>
+
+                <Border Width="160" Background="#FFE5E5E5" CornerRadius="5" Padding="5" Margin="2 5">
+                    <StackPanel>
+                        <TextBlock FontSize="30" HorizontalAlignment="Center">45</TextBlock>
+                        <TextBlock FontSize="20" HorizontalAlignment="Center">Usuários</TextBlock>
+                    </StackPanel>
+                </Border>
+            </WrapPanel>
+            
         </Grid>
     </DockPanel>
 </Window>
