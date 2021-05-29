@@ -16,14 +16,11 @@
         </StackPanel>
 
         <StackPanel DockPanel.Dock="Bottom">
-            <TextBlock>TOPO</TextBlock>
+            <TextBlock>RODAPÉ</TextBlock>
         </StackPanel>
 
         <Grid>
             <TextBlock>CENTRO</TextBlock>
-
         </Grid>
-
-
     </DockPanel>
 </Window>
