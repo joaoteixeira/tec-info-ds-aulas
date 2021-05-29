@@ -6,7 +6,24 @@
         xmlns:local="clr-namespace:SpaceSistemas"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Left" Width="200">
+            <TextBlock>MENU</TextBlock>          
+        </StackPanel>
 
-    </Grid>
+        <StackPanel DockPanel.Dock="Top">
+            <TextBlock>TOPO</TextBlock>
+        </StackPanel>
+
+        <StackPanel DockPanel.Dock="Bottom">
+            <TextBlock>TOPO</TextBlock>
+        </StackPanel>
+
+        <Grid>
+            <TextBlock>CENTRO</TextBlock>
+
+        </Grid>
+
+
+    </DockPanel>
 </Window>
