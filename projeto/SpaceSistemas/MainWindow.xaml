@@ -5,18 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SpaceSistemas"
         mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
         Title="Space Sistemas" MinHeight="700" MinWidth="1350" WindowStartupLocation="CenterScreen">
     <DockPanel>
         <StackPanel DockPanel.Dock="Left" Width="160" Margin="5 0">
+
             <Image Source="/Imagens/logo.jpg" Margin="0 5"/>
-            
-            <Button Margin="0 2">
+            <Button Margin="0 2" Height="50">
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock FontSize="14" Padding="10">Clientes</TextBlock>
-                    <Image Source="/Imagens/clientes.png" Width="28" />
+                    <TextBlock FontSize="16" Padding="5 10">Clientes</TextBlock>
+                    <materialDesign:PackIcon Kind="AccountSupervisor" Width="28" Height="28" Margin="0 4" />
                 </StackPanel>
             </Button>
-            
+
             <Button Margin="0 2">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock FontSize="14" Padding="10">Produtos</TextBlock>
@@ -78,7 +86,7 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            
+
             <StackPanel Grid.Column="0" Orientation="Horizontal">
                 <TextBlock FontWeight="Bold" Padding="5">Usuário Logado:</TextBlock>
                 <TextBlock Padding="0 5">João Teixeira</TextBlock>
@@ -90,15 +98,16 @@
             </StackPanel>
 
         </Grid>
-        
+
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
+                <RowDefinition Height="0"/>
+                <RowDefinition Height="86.503"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <WrapPanel>
+            <WrapPanel Margin="0,0,0,36" Grid.RowSpan="3">
                 <Border Width="160" Background="#FFE5E5E5" CornerRadius="5" Padding="5" Margin="2 5">
                     <StackPanel>
                         <TextBlock FontSize="30" HorizontalAlignment="Center">45</TextBlock>
@@ -135,9 +144,9 @@
                 </Border>
             </WrapPanel>
 
-            <TextBlock Grid.Row="1" Text="Últimas Vendas" FontSize="20" Margin="5 5"/>
+            <TextBlock Grid.Row="2" Text="Últimas Vendas" FontSize="20" Margin="5,5,5,5"/>
 
-            <DataGrid Grid.Row="2" Margin="5" x:Name="dataGridVendas" IsReadOnly="true"
+            <DataGrid Grid.Row="3" Margin="5,5,5,5" x:Name="dataGridVendas" IsReadOnly="true"
                       AutoGenerateColumns="False" AlternatingRowBackground="#FFE5E5E5" AlternationCount="2">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
