@@ -30,16 +30,6 @@ namespace SpaceSistemas
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                var conexao = new Conexao();
-            } catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            
-
-
             txtDataAtual.Text = "-";
             //DateTime.Now.ToString("dd/MM/yyyy");
 
