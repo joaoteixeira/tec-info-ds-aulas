@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SpaceSistemas.Models;
+using SpaceSistemas.Database;
 
 namespace SpaceSistemas
 {
@@ -29,6 +30,16 @@ namespace SpaceSistemas
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                var conexao = new Conexao();
+            } catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
+
+
             txtDataAtual.Text = "-";
             //DateTime.Now.ToString("dd/MM/yyyy");
 
