@@ -20,7 +20,27 @@ namespace SpaceSistemas.Models
 
         public void Delete(Funcionario t)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var query = conn.Query();
+                query.CommandText = "DELETE FROM funcionario WHERE cod_func = @id";
+
+                query.Parameters.AddWithValue("@id", t.Id);
+
+                var result = query.ExecuteNonQuery();
+
+                if (result == 0)
+                    throw new Exception("Registro não removido da base de dados. Verifique e tente novamente.");
+
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                conn.Close();
+            }
         }
 
         public Funcionario GetById(int id)

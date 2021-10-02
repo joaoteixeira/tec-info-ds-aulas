@@ -60,5 +60,28 @@ namespace SpaceSistemas.Views
             window.ShowDialog();
             LoadDataGrid();
         }
+
+        private void Button_Delete_Click(object sender, RoutedEventArgs e)
+        {
+            var funcionarioSelected = dataGrid.SelectedItem as Funcionario;
+
+            var result = MessageBox.Show($"Deseja realmente remover o funcionário `{funcionarioSelected.Nome}`?", "Confirmação de Exclusão",
+                MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+            try
+            {
+                if (result == MessageBoxResult.Yes)
+                {
+                    var dao = new FuncionarioDAO();
+                    dao.Delete(funcionarioSelected);
+                    LoadDataGrid();
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Exceção", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+        }
     }
 }
