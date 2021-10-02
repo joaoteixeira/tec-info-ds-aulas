@@ -1,0 +1,180 @@
+﻿<Window x:Class="SpaceSistemas.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SpaceSistemas"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        Title="SpaceSistemas" MinHeight="700" MinWidth="1350" WindowStartupLocation="CenterScreen">
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Left" Width="160" Margin="5 0">
+
+            <Image Source="/Imagens/logo.jpg" Margin="0 5"/>
+            <Button Margin="0 2" Height="50" Click="Menu_Button_Click">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock FontSize="16" Padding="5 10">Clientes</TextBlock>
+                    <materialDesign:PackIcon Kind="AccountSupervisor" Width="28" Height="28" Margin="0 4" />
+                </StackPanel>
+            </Button>
+
+            <Button Margin="0 2" Height="50" Click="Menu_Button_Click">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock FontSize="16" Padding="5 10">Funcionários</TextBlock>
+                    <materialDesign:PackIcon Kind="AccountSupervisor" Width="28" Height="28" Margin="0 4" />
+                </StackPanel>
+            </Button>
+
+            <Button Margin="0 2">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock FontSize="14" Padding="10">Produtos</TextBlock>
+                    <Image Source="/Imagens/produtos.png" Width="28" />
+                </StackPanel>
+            </Button>
+
+            <Button Margin="0 2">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock FontSize="14" Padding="10">Vendas</TextBlock>
+                    <Image Source="/Imagens/vendas.png" Width="28" />
+                </StackPanel>
+            </Button>
+
+            <Button Margin="0 2">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock FontSize="14" Padding="10">Relatórios</TextBlock>
+                    <Image Source="/Imagens/relatorios.png" Width="28" />
+                </StackPanel>
+            </Button>
+
+            <Button Margin="0 2">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock FontSize="14" Padding="10">Usuários</TextBlock>
+                    <Image Source="/Imagens/usuarios.png" Width="28" />
+                </StackPanel>
+            </Button>
+        </StackPanel>
+
+        <StackPanel DockPanel.Dock="Top" Margin="0 5" Orientation="Horizontal">
+            <Menu Padding="12">
+                <MenuItem Header="_Arquivo">
+                    <MenuItem Header="Trocar _Usuário"/>
+                    <MenuItem Header="_Sobre"/>
+                    <Separator/>
+                    <MenuItem Header="_Sair do sistema"/>
+                </MenuItem>
+            </Menu>
+
+            <Menu Padding="12" Margin="2 0">
+                <MenuItem Header="_Cadastros">
+                    <MenuItem Header="_Cliente"/>
+                    <MenuItem Header="_Funcionários"/>
+                    <MenuItem Header="_Fornecedores"/>
+                    <MenuItem Header="_Produtos"/>
+                </MenuItem>
+            </Menu>
+
+            <Menu Padding="12">
+                <MenuItem Header="_Vendas">
+                    <MenuItem Header="_Nova venda"/>
+                    <MenuItem Header="_Relatórios de vendas"/>
+                </MenuItem>
+            </Menu>
+        </StackPanel>
+
+        <Grid DockPanel.Dock="Bottom">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0" Orientation="Horizontal">
+                <TextBlock FontWeight="Bold" Padding="5">Usuário Logado:</TextBlock>
+                <TextBlock Padding="0 5">João Teixeira</TextBlock>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                <TextBlock FontWeight="Bold" Padding="5">Data:</TextBlock>
+                <TextBlock x:Name="txtDataAtual" Padding="0 5 5 5"/>
+            </StackPanel>
+
+        </Grid>
+
+        <Grid x:Name="gridContent" Visibility="Visible">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="461*"/>
+                <ColumnDefinition Width="719*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0"/>
+                <RowDefinition Height="86.503"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <WrapPanel Margin="0,0,0,2" Grid.RowSpan="2" Grid.ColumnSpan="2">
+                <Border Width="160" Background="#FFE5E5E5" CornerRadius="5" Padding="5" Margin="2 5">
+                    <StackPanel>
+                        <TextBlock FontSize="30" HorizontalAlignment="Center">45</TextBlock>
+                        <TextBlock FontSize="20" HorizontalAlignment="Center">Vendas</TextBlock>
+                    </StackPanel>
+                </Border>
+
+                <Border Width="160" Background="#FFE5E5E5" CornerRadius="5" Padding="5" Margin="2 5">
+                    <StackPanel>
+                        <TextBlock FontSize="30" HorizontalAlignment="Center">45</TextBlock>
+                        <TextBlock FontSize="20" HorizontalAlignment="Center">Clientes</TextBlock>
+                    </StackPanel>
+                </Border>
+
+                <Border Width="160" Background="#FFE5E5E5" CornerRadius="5" Padding="5" Margin="2 5">
+                    <StackPanel>
+                        <TextBlock FontSize="30" HorizontalAlignment="Center">45</TextBlock>
+                        <TextBlock FontSize="20" HorizontalAlignment="Center">Produtos</TextBlock>
+                    </StackPanel>
+                </Border>
+
+                <Border Width="160" Background="#FFE5E5E5" CornerRadius="5" Padding="5" Margin="2 5">
+                    <StackPanel>
+                        <TextBlock FontSize="30" HorizontalAlignment="Center">45</TextBlock>
+                        <TextBlock FontSize="20" HorizontalAlignment="Center">Fornecedores</TextBlock>
+                    </StackPanel>
+                </Border>
+
+                <Border Width="160" Background="#FFE5E5E5" CornerRadius="5" Padding="5" Margin="2 5">
+                    <StackPanel>
+                        <TextBlock FontSize="30" HorizontalAlignment="Center">45</TextBlock>
+                        <TextBlock FontSize="20" HorizontalAlignment="Center">Usuários</TextBlock>
+                    </StackPanel>
+                </Border>
+            </WrapPanel>
+
+            <TextBlock Grid.Row="2" Text="Últimas Vendas" FontSize="20" Margin="5,5,5,5" Grid.ColumnSpan="2"/>
+
+            <DataGrid Grid.Row="3" Margin="5,5,5,5" x:Name="dataGridVendas" IsReadOnly="true"
+                      AutoGenerateColumns="False" AlternatingRowBackground="#FFE5E5E5" AlternationCount="2" Grid.ColumnSpan="2">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
+                    <DataGridTextColumn Header="Nome do Cliente" Binding="{Binding Nome}"/>
+                    <DataGridTextColumn Header="Qtd. Produtos" Binding="{Binding QuantidadeProdutos}"/>
+                    <DataGridTextColumn Header="Total" Binding="{Binding ValorTotal, ConverterCulture='pt-BR', StringFormat=C}"/>
+
+                    <DataGridTemplateColumn Header="Ações">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Margin="2" Padding="5">Visualizar venda</Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+
+        </Grid>
+    </DockPanel>
+</Window>
