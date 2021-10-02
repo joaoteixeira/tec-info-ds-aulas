@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SpaceSistemas.Models;
+using SpaceSistemas.Views;
 
 
 namespace SpaceSistemas
@@ -53,34 +54,13 @@ namespace SpaceSistemas
         {
             Button button = sender as Button;
 
-            //MessageBox.Show("Menu button click");
-            Insert_Teste();
-        }
-
-        private void Insert_Teste()
-        {
-            try
+            switch (button.Name)
             {
-                Funcionario funcionario = new Funcionario();
-                funcionario.Nome = "Ana da Silva";
-                funcionario.CPF = "213.123.232-32";
-                funcionario.RG = "2123213 SESDEC/RO";
-                funcionario.DataNascimento = DateTime.Now;
-                funcionario.Email = "anasilva@gmail.com";
-                funcionario.Celular = "(69) 9 8421-0101";
-                funcionario.Funcao = "Vendedora";
-                funcionario.Salario = 2550.0;
-
-                FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
-                funcionarioDAO.Insert(funcionario);
-
-                MessageBox.Show("O Funcionário foi adicionado com sucesso!", "Sucesso", MessageBoxButton.OK, MessageBoxImage.Information);
+                case "MN_Funcionario":
+                    var window = new FuncionarioFormWindow();
+                    window.ShowDialog();
+                    break;
             }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Não Executado", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-            
         }
     }
 }
