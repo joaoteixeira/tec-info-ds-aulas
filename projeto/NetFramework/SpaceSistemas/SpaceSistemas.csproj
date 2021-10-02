@@ -130,6 +130,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Database\Conexao.cs" />
+    <Compile Include="Interfaces\IDAO.cs" />
     <Compile Include="Models\Venda.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -139,6 +140,7 @@
   <ItemGroup>
     <Compile Include="Models\Funcionario.cs" />
     <Compile Include="Models\FuncionarioDAO.cs" />
+    <Compile Include="Models\VendaDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

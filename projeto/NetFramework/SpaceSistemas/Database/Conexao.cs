@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 
@@ -31,6 +32,21 @@ namespace SpaceSistemas.Database
                 connection.Open();
 
             } catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public MySqlCommand Query()
+        {
+            try
+            {
+                command = connection.CreateCommand();
+                command.CommandType = CommandType.Text;
+
+                return command;
+            } 
+            catch(Exception)
             {
                 throw;
             }
