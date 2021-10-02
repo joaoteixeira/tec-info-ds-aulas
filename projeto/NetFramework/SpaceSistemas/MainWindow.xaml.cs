@@ -57,7 +57,7 @@ namespace SpaceSistemas
             switch (button.Name)
             {
                 case "MN_Funcionario":
-                    var window = new FuncionarioFormWindow();
+                    var window = new FuncionarioListWindow();
                     window.ShowDialog();
                     break;
             }

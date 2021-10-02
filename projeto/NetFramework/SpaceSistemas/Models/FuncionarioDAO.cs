@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SpaceSistemas.Interfaces;
 using SpaceSistemas.Database;
+using MySql.Data.MySqlClient;
 
 namespace SpaceSistemas.Models
 {
@@ -60,7 +61,40 @@ namespace SpaceSistemas.Models
 
         public List<Funcionario> List()
         {
-            throw new NotImplementedException();
+            try
+            {
+                List<Funcionario> list = new List<Funcionario>();
+
+                var query = conn.Query();
+                query.CommandText = "SELECT * FROM funcionario";
+
+                MySqlDataReader reader = query.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    list.Add(new Funcionario() {
+                        Id = reader.GetInt32("cod_func"),
+                        Nome = reader.GetString("nome_func"),
+                        CPF = reader.GetString("cpf_func"),
+                        RG = reader.GetString("rg_func"),
+                        DataNascimento = reader.GetDateTime("datanasc_func"),
+                        Email = reader.GetString("email_func"),
+                        Celular = reader.GetString("celular_func"),
+                        Funcao = reader.GetString("funcao_func"),
+                        Salario = reader.GetDouble("salario_func")
+                    });
+                }
+
+                return list;
+            }
+            catch(Exception e)
+            {
+                throw e;
+            } 
+            finally
+            {
+                conn.Close();
+            }
         }
 
         public void Update(Funcionario t)
