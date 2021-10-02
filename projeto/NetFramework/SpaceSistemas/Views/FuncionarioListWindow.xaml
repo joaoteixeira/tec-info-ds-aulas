@@ -52,7 +52,7 @@
                             <StackPanel Orientation="Horizontal">
                                 <Button Style="{StaticResource MaterialDesignIconForegroundButton}" 
                                         Content="{materialDesign:PackIcon Eye}"
-                                        ToolTip="Visualizar Registro" Margin="0 0 5 0" />
+                                        ToolTip="Visualizar Registro" Margin="0 0 5 0" Click="Button_Update_Click" />
                                 <Button Style="{StaticResource MaterialDesignIconForegroundButton}" 
                                         Content="{materialDesign:PackIcon Delete}"
                                         ToolTip="Excluir Registro" />

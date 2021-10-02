@@ -20,35 +20,97 @@ namespace SpaceSistemas.Views
     /// </summary>
     public partial class FuncionarioFormWindow : Window
     {
+        private int _id;
+
+        private Funcionario _funcionario;
+
         public FuncionarioFormWindow()
         {
             InitializeComponent();
             Loaded += FuncionarioFormWindow_Loaded;
         }
 
+        public FuncionarioFormWindow(int id)
+        {
+            _id = id;
+            InitializeComponent();
+            Loaded += FuncionarioFormWindow_Loaded;
+        }
+
         private void FuncionarioFormWindow_Loaded(object sender, RoutedEventArgs e)
         {
+            _funcionario = new Funcionario();
 
+            if (_id > 0)
+                FillForm();          
         }
 
         private void BtnSalvar_Click(object sender, RoutedEventArgs e)
         {
+            _funcionario.Nome = txtNome.Text;
+            _funcionario.CPF = txtCPF.Text;
+            _funcionario.RG = txtRG.Text;
+            _funcionario.DataNascimento = (DateTime)dtPickerDataNascimento.SelectedDate;
+            _funcionario.Email = txtEmail.Text;
+            _funcionario.Celular = txtCelular.Text;
+            _funcionario.Funcao = txtFuncao.Text;
+            _funcionario.Salario = Convert.ToDouble(txtSalario.Text);
+
+            SaveData();
+        }
+
+        private void SaveData()
+        {
             try
             {
-                Funcionario funcionario = new Funcionario();
-                funcionario.Nome = txtNome.Text;
-                funcionario.CPF = txtCPF.Text;
-                funcionario.RG = txtRG.Text;
-                funcionario.DataNascimento = (DateTime)dtPickerDataNascimento.SelectedDate;
-                funcionario.Email = txtEmail.Text;
-                funcionario.Celular = txtCelular.Text;
-                funcionario.Funcao = txtFuncao.Text;
-                funcionario.Salario = Convert.ToDouble(txtSalario.Text);
+                var dao = new FuncionarioDAO();
+                var text = "atualizado";
 
-                FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
-                funcionarioDAO.Insert(funcionario);
+                if (_funcionario.Id == 0)
+                {
+                    dao.Insert(_funcionario);
+                    text = "adicionado";
+                }
+                else
+                    dao.Update(_funcionario);
 
-                MessageBox.Show("O Funcionário foi adicionado com sucesso!", "Sucesso", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show($"O Funcionário foi {text} com sucesso!", "Sucesso", MessageBoxButton.OK, MessageBoxImage.Information);
+                CloseFormVerify();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Não Executado", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void FillForm()
+        {
+            try
+            {
+                var dao = new FuncionarioDAO();
+                _funcionario = dao.GetById(_id);
+
+                txtId.Text = _funcionario.Id.ToString();
+                txtNome.Text = _funcionario.Nome;
+                txtCPF.Text = _funcionario.CPF;
+                txtRG.Text = _funcionario.RG;
+                dtPickerDataNascimento.SelectedDate = _funcionario.DataNascimento;
+                txtEmail.Text = _funcionario.Email;
+                txtCelular.Text = _funcionario.Celular;
+                txtFuncao.Text = _funcionario.Funcao;
+                txtSalario.Text = _funcionario.Salario.ToString();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Exceção", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void CloseFormVerify()
+        {
+            if (_funcionario.Id == 0)
+            {
                 var result = MessageBox.Show("Deseja continuar adicionando funcionários?", "Continuar?", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
                 if (result == MessageBoxResult.No)
@@ -56,10 +118,8 @@ namespace SpaceSistemas.Views
                 else
                     ClearInputs();
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Não Executado", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+            else
+                this.Close();
         }
 
         private void ClearInputs()

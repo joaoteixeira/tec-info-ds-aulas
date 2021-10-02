@@ -49,6 +49,16 @@ namespace SpaceSistemas.Views
         {
             var window = new FuncionarioFormWindow();
             window.ShowDialog();
+            LoadDataGrid();
+        }
+
+        private void Button_Update_Click(object sender, RoutedEventArgs e)
+        {
+            var funcionarioSelected = dataGrid.SelectedItem as Funcionario;
+
+            var window = new FuncionarioFormWindow(funcionarioSelected.Id);
+            window.ShowDialog();
+            LoadDataGrid();
         }
     }
 }
