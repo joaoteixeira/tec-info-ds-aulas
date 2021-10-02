@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace SpaceSistemas.Dominio.Venda
+namespace SpaceSistemas.Models
 {
     public class Venda
     {

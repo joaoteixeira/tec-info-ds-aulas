@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using SpaceSistemas.Dominio.Venda;
+using SpaceSistemas.Models;
 
 namespace SpaceSistemas
 {
@@ -30,7 +30,7 @@ namespace SpaceSistemas
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
             txtDataAtual.Text = "-";
-            // DateTime.Now.ToString("dd/MM/yyyy");
+            //DateTime.Now.ToString("dd/MM/yyyy");
 
             List<Venda> listaVendas = new List<Venda>();
 
