@@ -50,32 +50,60 @@ namespace SpaceSistemas.Views
             _funcionario.Nome = txtNome.Text;
             _funcionario.CPF = txtCPF.Text;
             _funcionario.RG = txtRG.Text;
-            _funcionario.DataNascimento = (DateTime)dtPickerDataNascimento.SelectedDate;
             _funcionario.Email = txtEmail.Text;
             _funcionario.Celular = txtCelular.Text;
             _funcionario.Funcao = txtFuncao.Text;
-            _funcionario.Salario = Convert.ToDouble(txtSalario.Text);
+
+            if (double.TryParse(txtSalario.Text, out double salario))
+                _funcionario.Salario = salario;
+
+            if (dtPickerDataNascimento.SelectedDate != null)
+                _funcionario.DataNascimento = (DateTime)dtPickerDataNascimento.SelectedDate;
 
             SaveData();
+        }
+
+        private bool Validate()
+        {
+            var validator = new FuncionarioValitador();
+            var result = validator.Validate(_funcionario);
+            
+            if(!result.IsValid)
+            {
+                string errors = null;
+                var count = 1;
+
+                foreach(var failure in result.Errors)
+                {
+                    errors += $"{count++} - {failure.ErrorMessage}\n";
+                }
+
+                MessageBox.Show(errors, "Validação de Dados", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+
+            return result.IsValid;
         }
 
         private void SaveData()
         {
             try
             {
-                var dao = new FuncionarioDAO();
-                var text = "atualizado";
-
-                if (_funcionario.Id == 0)
+                if (Validate())
                 {
-                    dao.Insert(_funcionario);
-                    text = "adicionado";
-                }
-                else
-                    dao.Update(_funcionario);
+                    var dao = new FuncionarioDAO();
+                    var text = "atualizado";
 
-                MessageBox.Show($"O Funcionário foi {text} com sucesso!", "Sucesso", MessageBoxButton.OK, MessageBoxImage.Information);
-                CloseFormVerify();
+                    if (_funcionario.Id == 0)
+                    {
+                        dao.Insert(_funcionario);
+                        text = "adicionado";
+                    }
+                    else
+                        dao.Update(_funcionario);
+
+                    MessageBox.Show($"O Funcionário foi {text} com sucesso!", "Sucesso", MessageBoxButton.OK, MessageBoxImage.Information);
+                    CloseFormVerify();
+                }
             }
             catch(Exception ex)
             {
