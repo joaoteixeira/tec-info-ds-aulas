@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SpaceSistemas.Interfaces;
 using SpaceSistemas.Database;
+using SpaceSistemas.Helpers;
 using MySql.Data.MySqlClient;
 
 namespace SpaceSistemas.Models
@@ -65,11 +66,11 @@ namespace SpaceSistemas.Models
                     funcionario.Nome = reader.GetString("nome_func");
                     funcionario.CPF = reader.GetString("cpf_func");
                     funcionario.RG = reader.GetString("rg_func");
-                    funcionario.DataNascimento = reader.GetDateTime("datanasc_func");
+                    funcionario.DataNascimento = DAOHelper.GetDateTime(reader, "datanasc_func");
                     funcionario.Email = reader.GetString("email_func");
                     funcionario.Celular = reader.GetString("celular_func");
                     funcionario.Funcao = reader.GetString("funcao_func");
-                    funcionario.Salario = reader.GetDouble("salario_func");
+                    funcionario.Salario = DAOHelper.GetDouble(reader, "salario_func");
                 }
 
                 return funcionario;
@@ -95,7 +96,7 @@ namespace SpaceSistemas.Models
                 query.Parameters.AddWithValue("@nome", t.Nome);
                 query.Parameters.AddWithValue("@cpf", t.CPF);
                 query.Parameters.AddWithValue("@rg", t.RG);
-                query.Parameters.AddWithValue("@datanasc", t.DataNascimento.ToString("yyyy-MM-dd")); //"10/11/1990" -> "1990-11-10"
+                query.Parameters.AddWithValue("@datanasc", t.DataNascimento?.ToString("yyyy-MM-dd")); //"10/11/1990" -> "1990-11-10"
                 query.Parameters.AddWithValue("@email", t.Email);
                 query.Parameters.AddWithValue("@celular", t.Celular);
                 query.Parameters.AddWithValue("@funcao", t.Funcao);
@@ -130,14 +131,14 @@ namespace SpaceSistemas.Models
                 {
                     list.Add(new Funcionario() {
                         Id = reader.GetInt32("cod_func"),
-                        Nome = reader.GetString("nome_func"),
-                        CPF = reader.GetString("cpf_func"),
-                        RG = reader.GetString("rg_func"),
-                        DataNascimento = reader.GetDateTime("datanasc_func"),
-                        Email = reader.GetString("email_func"),
-                        Celular = reader.GetString("celular_func"),
-                        Funcao = reader.GetString("funcao_func"),
-                        Salario = reader.GetDouble("salario_func")
+                        Nome = DAOHelper.GetString(reader, "nome_func"),
+                        CPF = DAOHelper.GetString(reader, "cpf_func"),
+                        RG = DAOHelper.GetString(reader, "rg_func"),
+                        DataNascimento = DAOHelper.GetDateTime(reader, "datanasc_func"),
+                        Email = DAOHelper.GetString(reader, "email_func"),
+                        Celular = DAOHelper.GetString(reader, "celular_func"),
+                        Funcao = DAOHelper.GetString(reader, "funcao_func"),
+                        Salario = DAOHelper.GetDouble(reader, "salario_func")
                     });
                 }
 
@@ -165,7 +166,7 @@ namespace SpaceSistemas.Models
                 query.Parameters.AddWithValue("@nome", t.Nome);
                 query.Parameters.AddWithValue("@cpf", t.CPF);
                 query.Parameters.AddWithValue("@rg", t.RG);
-                query.Parameters.AddWithValue("@datanasc", t.DataNascimento.ToString("yyyy-MM-dd")); //"10/11/1990" -> "1990-11-10"
+                query.Parameters.AddWithValue("@datanasc", t.DataNascimento?.ToString("yyyy-MM-dd")); //"10/11/1990" -> "1990-11-10"
                 query.Parameters.AddWithValue("@email", t.Email);
                 query.Parameters.AddWithValue("@celular", t.Celular);
                 query.Parameters.AddWithValue("@funcao", t.Funcao);
