@@ -89,9 +89,18 @@ namespace SpaceSistemas.Models
         {
             try
             {
+
+                /*
+                 * PROCEDURE `inserir_funcionario`(IN nome varchar(200), IN cpf varchar(20), IN rg varchar(20),
+                                                     IN datanasc date, IN email varchar(200), IN celular varchar(50), 
+                                                    IN funcao varchar(50),
+                                                     IN salario double)
+                 */
                 var query = conn.Query();
-                query.CommandText = "INSERT INTO funcionario (nome_func, cpf_func, rg_func, datanasc_func, email_func, celular_func, funcao_func, salario_func) " +
-                    "VALUES (@nome, @cpf, @rg, @datanasc, @email, @celular, @funcao, @salario)";
+                //query.CommandText = "INSERT INTO funcionario (nome_func, cpf_func, rg_func, datanasc_func, email_func, celular_func, funcao_func, salario_func) " +
+                //    "VALUES (@nome, @cpf, @rg, @datanasc, @email, @celular, @funcao, @salario)";
+
+                query.CommandText = "CALL inserir_funcionario(@nome, @cpf, @rg, @datanasc, @email, @celular, @funcao, @salario)";
 
                 query.Parameters.AddWithValue("@nome", t.Nome);
                 query.Parameters.AddWithValue("@cpf", t.CPF);
@@ -102,10 +111,17 @@ namespace SpaceSistemas.Models
                 query.Parameters.AddWithValue("@funcao", t.Funcao);
                 query.Parameters.AddWithValue("@salario", t.Salario);
 
-                var result = query.ExecuteNonQuery();
+                //var result = query.ExecuteNonQuery();
 
-                if (result == 0)
-                    throw new Exception("O registro não foi inserido. Verifique e tente novamente.");
+                MySqlDataReader reader = query.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    if(reader.GetName(0).Equals("Alerta"))
+                    {
+                        throw new Exception(reader.GetString("Alerta"));
+                    }
+                }
 
             } catch (Exception e)
             {
