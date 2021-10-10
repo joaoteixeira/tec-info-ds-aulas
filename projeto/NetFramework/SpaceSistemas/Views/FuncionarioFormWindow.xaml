@@ -73,13 +73,20 @@
                 materialDesign:HintAssist.Hint="Nome Completo"
                 materialDesign:TextFieldAssist.HasClearButton="True"
                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                Width="450"/>
+                Width="350"/>
 
             <DatePicker 
                 x:Name="dtPickerDataNascimento"
                 materialDesign:HintAssist.Hint="Data de Nascimento" 
                 Style="{StaticResource MaterialDesignOutlinedDatePicker}"
-                Width="310" Margin="20 0 0 0"/>
+                Width="200" Margin="20 0 0 0"/>
+
+            <ComboBox x:Name="comboBoxSexo"
+                      materialDesign:HintAssist.Hint="Sexo"
+                      Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                      DisplayMemberPath="Nome"
+                      SelectedValuePath="Id"
+                      Width="190" Margin="20 0 0 0"/>
         </StackPanel>
 
         <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="10">

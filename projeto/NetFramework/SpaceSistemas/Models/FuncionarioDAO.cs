@@ -49,7 +49,7 @@ namespace SpaceSistemas.Models
             try
             {
                 var query = conn.Query();
-                query.CommandText = "SELECT* FROM funcionario WHERE cod_func = @id";
+                query.CommandText = "SELECT * FROM funcionario LEFT JOIN sexo ON cod_sex = cod_sex_fk WHERE cod_func = @id";
 
                 query.Parameters.AddWithValue("@id", id);
 
@@ -71,6 +71,12 @@ namespace SpaceSistemas.Models
                     funcionario.Celular = reader.GetString("celular_func");
                     funcionario.Funcao = reader.GetString("funcao_func");
                     funcionario.Salario = DAOHelper.GetDouble(reader, "salario_func");
+
+                    if (!DAOHelper.IsNull(reader, "cod_sex_fk"))
+                        funcionario.Sexo = new Sexo() { 
+                            Id = reader.GetInt32("cod_sex"), 
+                            Nome = reader.GetString("nome_sex") 
+                        };
                 }
 
                 return funcionario;
@@ -100,9 +106,10 @@ namespace SpaceSistemas.Models
                 //query.CommandText = "INSERT INTO funcionario (nome_func, cpf_func, rg_func, datanasc_func, email_func, celular_func, funcao_func, salario_func) " +
                 //    "VALUES (@nome, @cpf, @rg, @datanasc, @email, @celular, @funcao, @salario)";
 
-                query.CommandText = "CALL inserir_funcionario(@nome, @cpf, @rg, @datanasc, @email, @celular, @funcao, @salario)";
+                query.CommandText = "CALL inserir_funcionario(@nome, @sexo, @cpf, @rg, @datanasc, @email, @celular, @funcao, @salario)";
 
                 query.Parameters.AddWithValue("@nome", t.Nome);
+                query.Parameters.AddWithValue("@sexo", t.Sexo.Id);
                 query.Parameters.AddWithValue("@cpf", t.CPF);
                 query.Parameters.AddWithValue("@rg", t.RG);
                 query.Parameters.AddWithValue("@datanasc", t.DataNascimento?.ToString("yyyy-MM-dd")); //"10/11/1990" -> "1990-11-10"
@@ -139,7 +146,7 @@ namespace SpaceSistemas.Models
                 List<Funcionario> list = new List<Funcionario>();
 
                 var query = conn.Query();
-                query.CommandText = "SELECT * FROM funcionario";
+                query.CommandText = "SELECT * FROM funcionario LEFT JOIN sexo ON cod_sex = cod_sex_fk";
 
                 MySqlDataReader reader = query.ExecuteReader();
 
@@ -154,7 +161,8 @@ namespace SpaceSistemas.Models
                         Email = DAOHelper.GetString(reader, "email_func"),
                         Celular = DAOHelper.GetString(reader, "celular_func"),
                         Funcao = DAOHelper.GetString(reader, "funcao_func"),
-                        Salario = DAOHelper.GetDouble(reader, "salario_func")
+                        Salario = DAOHelper.GetDouble(reader, "salario_func"),
+                        Sexo = DAOHelper.IsNull(reader, "cod_sex_fk") ? null : new Sexo() { Id = reader.GetInt32("cod_sex"), Nome = reader.GetString("nome_sex") }
                     });
                 }
 
@@ -176,10 +184,11 @@ namespace SpaceSistemas.Models
             {
                 var query = conn.Query();
                 query.CommandText = "UPDATE funcionario SET nome_func = @nome, cpf_func = @cpf, rg_func = @rg, datanasc_func = @datanasc, " +
-                    "email_func = @email, celular_func = @celular, funcao_func = @funcao, salario_func = @salario " +
+                    "email_func = @email, celular_func = @celular, funcao_func = @funcao, salario_func = @salario, cod_sex_fk = @sexo " +
                     "WHERE cod_func = @id";
 
                 query.Parameters.AddWithValue("@nome", t.Nome);
+                query.Parameters.AddWithValue("@sexo", t.Sexo.Id);
                 query.Parameters.AddWithValue("@cpf", t.CPF);
                 query.Parameters.AddWithValue("@rg", t.RG);
                 query.Parameters.AddWithValue("@datanasc", t.DataNascimento?.ToString("yyyy-MM-dd")); //"10/11/1990" -> "1990-11-10"

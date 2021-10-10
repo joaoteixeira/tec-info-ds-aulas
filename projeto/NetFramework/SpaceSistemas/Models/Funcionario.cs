@@ -25,5 +25,7 @@ namespace SpaceSistemas.Models
         public string Funcao { get; set; }
 
         public double Salario { get; set; }
+
+        public Sexo Sexo { get; set; }
     }
 }

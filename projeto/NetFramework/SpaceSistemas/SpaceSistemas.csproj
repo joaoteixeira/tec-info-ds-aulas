@@ -126,6 +126,8 @@
     </ApplicationDefinition>
     <Compile Include="Helpers\DAOHelper.cs" />
     <Compile Include="Models\FuncionarioValitador.cs" />
+    <Compile Include="Models\Sexo.cs" />
+    <Compile Include="Models\SexoDAO.cs" />
     <Compile Include="Views\FuncionarioFormWindow.xaml.cs">
       <DependentUpon>FuncionarioFormWindow.xaml</DependentUpon>
     </Compile>

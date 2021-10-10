@@ -40,6 +40,7 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
                 <DataGridTextColumn Header="Nome do Funcionário" Binding="{Binding Nome}"/>
+                <DataGridTextColumn Header="Sexo" Binding="{Binding Sexo.Nome}"/>
                 <DataGridTextColumn Header="CPF" Binding="{Binding CPF}"/>
                 <DataGridTextColumn Header="E-mail" Binding="{Binding Email}"/>
                 <DataGridTextColumn Header="Celular" Binding="{Binding Celular}"/>
