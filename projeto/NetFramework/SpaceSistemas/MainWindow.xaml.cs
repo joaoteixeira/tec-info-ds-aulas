@@ -53,11 +53,16 @@ namespace SpaceSistemas
         private void Menu_Button_Click(object sender, RoutedEventArgs e)
         {
             Button button = sender as Button;
+            Window window;
 
             switch (button.Name)
             {
                 case "MN_Funcionario":
-                    var window = new FuncionarioListWindow();
+                    window = new FuncionarioListWindow();
+                    window.ShowDialog();
+                    break;
+                case "MN_Compra":
+                    window = new CompraWindow();
                     window.ShowDialog();
                     break;
             }
