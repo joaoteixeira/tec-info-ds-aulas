@@ -157,6 +157,8 @@ namespace SpaceSistemas.Views
                 comboBoxFuncionario.ItemsSource = new FuncionarioDAO().List();
                 comboBoxFornecedor.ItemsSource = new FornecedorDAO().List();
 
+                comboBoxFuncionario.SelectedValue = Usuario.GetFuncionarioId();
+
             } catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Não Executado", MessageBoxButton.OK, MessageBoxImage.Error);

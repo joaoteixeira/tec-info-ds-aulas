@@ -16,7 +16,7 @@ using SpaceSistemas.Models;
 using SpaceSistemas.Views;
 
 
-namespace SpaceSistemas
+namespace SpaceSistemas.Views
 {
     /// <summary>
     /// Interação lógica para MainWindow.xam
@@ -31,6 +31,9 @@ namespace SpaceSistemas
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
+
+            txtBlockNomeFuncionario.Text = Usuario.GetInstance().Funcionario.Nome;
+
             txtDataAtual.Text = "-";
             //DateTime.Now.ToString("dd/MM/yyyy");
 
