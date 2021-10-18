@@ -16,7 +16,7 @@ namespace SpaceSistemas.Models
 
         public string CPF { get; set; }
 
-        public DateTime DataNascimento { get; set; }
+        public DateTime? DataNascimento { get; set; }
 
         public string Email { get; set; }
 
@@ -25,5 +25,7 @@ namespace SpaceSistemas.Models
         public string Funcao { get; set; }
 
         public double Salario { get; set; }
+
+        public Sexo Sexo { get; set; }
     }
 }

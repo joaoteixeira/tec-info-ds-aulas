@@ -41,8 +41,10 @@ namespace SpaceSistemas.Views
         {
             _funcionario = new Funcionario();
 
+            LoadComboBox();
+
             if (_id > 0)
-                FillForm();          
+                FillForm();
         }
 
         private void BtnSalvar_Click(object sender, RoutedEventArgs e)
@@ -59,6 +61,9 @@ namespace SpaceSistemas.Views
 
             if (dtPickerDataNascimento.SelectedDate != null)
                 _funcionario.DataNascimento = (DateTime)dtPickerDataNascimento.SelectedDate;
+
+            if (comboBoxSexo.SelectedItem != null)
+                _funcionario.Sexo = comboBoxSexo.SelectedItem as Sexo;
 
             SaveData();
         }
@@ -128,6 +133,9 @@ namespace SpaceSistemas.Views
                 txtFuncao.Text = _funcionario.Funcao;
                 txtSalario.Text = _funcionario.Salario.ToString();
 
+                if (_funcionario.Sexo != null)
+                    comboBoxSexo.SelectedValue = _funcionario.Sexo.Id;
+
             }
             catch (Exception ex)
             {
@@ -148,6 +156,18 @@ namespace SpaceSistemas.Views
             }
             else
                 this.Close();
+        }
+
+        private void LoadComboBox()
+        {
+            try
+            {
+                comboBoxSexo.ItemsSource = new SexoDAO().List();
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
         private void ClearInputs()

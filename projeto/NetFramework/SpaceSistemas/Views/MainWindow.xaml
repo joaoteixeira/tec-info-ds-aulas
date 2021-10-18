@@ -1,9 +1,9 @@
-﻿<Window x:Class="SpaceSistemas.MainWindow"
+﻿<Window x:Class="SpaceSistemas.Views.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:SpaceSistemas"
+        xmlns:local="clr-namespace:SpaceSistemas.Views"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -32,28 +32,28 @@
                 </StackPanel>
             </Button>
 
-            <Button Margin="0 2">
+            <Button Margin="0 2" Height="50">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock FontSize="14" Padding="10">Produtos</TextBlock>
                     <Image Source="/Imagens/produtos.png" Width="28" />
                 </StackPanel>
             </Button>
 
-            <Button Margin="0 2">
+            <Button Margin="0 2" Height="50" Click="Menu_Button_Click" Name="MN_Compra">
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock FontSize="14" Padding="10">Vendas</TextBlock>
+                    <TextBlock FontSize="14" Padding="10">Compras</TextBlock>
                     <Image Source="/Imagens/vendas.png" Width="28" />
                 </StackPanel>
             </Button>
 
-            <Button Margin="0 2">
+            <Button Margin="0 2" Height="50">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock FontSize="14" Padding="10">Relatórios</TextBlock>
                     <Image Source="/Imagens/relatorios.png" Width="28" />
                 </StackPanel>
             </Button>
 
-            <Button Margin="0 2">
+            <Button Margin="0 2" Height="50">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock FontSize="14" Padding="10">Usuários</TextBlock>
                     <Image Source="/Imagens/usuarios.png" Width="28" />
@@ -96,7 +96,7 @@
 
             <StackPanel Grid.Column="0" Orientation="Horizontal">
                 <TextBlock FontWeight="Bold" Padding="5">Usuário Logado:</TextBlock>
-                <TextBlock Padding="0 5">João Teixeira</TextBlock>
+                <TextBlock x:Name="txtBlockNomeFuncionario" Padding="0 5"></TextBlock>
             </StackPanel>
 
             <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
