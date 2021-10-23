@@ -14,7 +14,7 @@
         TextOptions.TextRenderingMode="Auto"        
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="Funcionário" Height="680" Width="820" WindowStartupLocation="CenterScreen">
+        Title="Funcionário" Height="820" Width="820" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="70"/>
@@ -22,9 +22,9 @@
             <RowDefinition Height="70"/>
             <RowDefinition Height="70"/>
             <RowDefinition Height="70"/>
-            <RowDefinition Height="70"/>
-            <RowDefinition Height="120"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="120"/>
+            <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0">
@@ -123,21 +123,50 @@
                 Width="400" Margin="20 0 0 0"/>
         </StackPanel>
 
-        <StackPanel Grid.Row="5" Orientation="Horizontal" Margin="10" Visibility="Collapsed">
-            <TextBox
-                materialDesign:HintAssist.Hint="Cidade"
-                materialDesign:TextFieldAssist.HasClearButton="True"
-                Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                Width="420"/>
+        <StackPanel Grid.Row="5" Margin="10">
+            <TextBlock Text="Informações de Endereço"
+                       Style="{StaticResource MaterialDesignHeadline6TextBlock}"
+                       Margin="0 10 0 10"/>
+            <StackPanel Orientation="Horizontal">
 
-            <ComboBox
-                materialDesign:HintAssist.Hint="Estado"
-                Style="{StaticResource MaterialDesignOutlinedComboBox}"
-                ItemsSource="{Binding ListEstados}"
-                DisplayMemberPath="Nome"
-                SelectedValuePath="Id"
-                Width="340" Margin="20 0 0 0"/>
+                <TextBox
+                    x:Name="txtRua"
+                    materialDesign:HintAssist.Hint="Rua"
+                    materialDesign:TextFieldAssist.HasClearButton="True"
+                    Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                    Width="380"/>
+                <TextBox
+                    x:Name="txtNumero"
+                    materialDesign:HintAssist.Hint="Número"
+                    materialDesign:TextFieldAssist.HasClearButton="True"
+                    Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                    Width="150" Margin="20 0 0 0"/>
+                <TextBox
+                    x:Name="txtBairro"
+                    materialDesign:HintAssist.Hint="Bairro"
+                    materialDesign:TextFieldAssist.HasClearButton="True"
+                    Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                    Width="210" Margin="20 0 0 0"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0 20 0 0">
+
+                <TextBox
+                    x:Name="txtCidade"
+                    materialDesign:HintAssist.Hint="Cidade"
+                    materialDesign:TextFieldAssist.HasClearButton="True"
+                    Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                    Width="420"/>
+
+                <ComboBox
+                    x:Name="comboBoxEstado"
+                    materialDesign:HintAssist.Hint="Estado"
+                    Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                    Width="340" Margin="20 0 0 0"/>
+            </StackPanel>
+
         </StackPanel>
+
 
         <StackPanel Grid.Row="6" Margin="10">
             <TextBlock Text="Informações da Empresa"

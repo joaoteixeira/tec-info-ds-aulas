@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using SpaceSistemas.Models;
+using SpaceSistemas.Helpers;
 
 namespace SpaceSistemas.Views
 {
@@ -64,6 +65,17 @@ namespace SpaceSistemas.Views
 
             if (comboBoxSexo.SelectedItem != null)
                 _funcionario.Sexo = comboBoxSexo.SelectedItem as Sexo;
+
+            _funcionario.Endereco = new Endereco();
+            _funcionario.Endereco.Rua = txtRua.Text;
+            _funcionario.Endereco.Bairro = txtBairro.Text;
+            _funcionario.Endereco.Cidade = txtCidade.Text;
+
+            if (int.TryParse(txtNumero.Text, out int numero))
+                _funcionario.Endereco.Numero = numero;
+
+            if (comboBoxEstado.SelectedItem != null)
+                _funcionario.Endereco.Estado = comboBoxEstado.SelectedItem as string;
 
             SaveData();
         }
@@ -136,6 +148,16 @@ namespace SpaceSistemas.Views
                 if (_funcionario.Sexo != null)
                     comboBoxSexo.SelectedValue = _funcionario.Sexo.Id;
 
+                if (_funcionario.Endereco != null)
+                {
+                    txtRua.Text = _funcionario.Endereco.Rua;
+                    txtNumero.Text = _funcionario.Endereco.Numero.ToString();
+                    txtBairro.Text = _funcionario.Endereco.Bairro;
+                    txtCidade.Text = _funcionario.Endereco.Cidade;
+
+                    comboBoxEstado.SelectedValue = _funcionario.Endereco.Estado;
+                }
+
             }
             catch (Exception ex)
             {
@@ -162,6 +184,7 @@ namespace SpaceSistemas.Views
         {
             try
             {
+                comboBoxEstado.ItemsSource = Estado.List();
                 comboBoxSexo.ItemsSource = new SexoDAO().List();
             }
             catch (Exception ex)
