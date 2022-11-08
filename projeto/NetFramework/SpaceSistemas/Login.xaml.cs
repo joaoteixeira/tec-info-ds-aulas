@@ -30,8 +30,8 @@ namespace SpaceSistemas
         private void Login_Loaded(object sender, RoutedEventArgs e)
         {
             //_ = txtUsuario.Focus();
-            new FuncionarioListWindow().Show();
-            this.Close();
+            //new FuncionarioListWindow().Show();
+            //this.Close();
         }
 
         private void BtnAcessar_Click(object sender, RoutedEventArgs e)
