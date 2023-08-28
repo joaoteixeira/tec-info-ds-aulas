@@ -36,8 +36,8 @@ namespace SpaceSistemas
 
         private void BtnAcessar_Click(object sender, RoutedEventArgs e)
         {
-            string usuario = txtUsuario.Text;
-            string senha = passBoxSenha.Password.ToString();
+            string usuario = "joao"; // txtUsuario.Text;
+            string senha = "123456"; // passBoxSenha.Password.ToString();
 
             if (Usuario.Login(usuario, senha))
             {

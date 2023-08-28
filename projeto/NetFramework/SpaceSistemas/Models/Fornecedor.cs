@@ -14,6 +14,10 @@ namespace SpaceSistemas.Models
 
         public string NomeFantasia { get; set; }
 
+        public string CNPJ { get; set; }
+
+        public string Telefone { get; set; }
+
         public string Representante { get; set; }
     }
 }

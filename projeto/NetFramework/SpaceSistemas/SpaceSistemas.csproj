@@ -152,6 +152,12 @@
     <Compile Include="Views\CompraProdutoListAdd.xaml.cs">
       <DependentUpon>CompraProdutoListAdd.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\FornecedorFormWindow.xaml.cs">
+      <DependentUpon>FornecedorFormWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FornecedorListWindow.xaml.cs">
+      <DependentUpon>FornecedorListWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\FuncionarioFormWindow.xaml.cs">
       <DependentUpon>FuncionarioFormWindow.xaml</DependentUpon>
     </Compile>
@@ -159,6 +165,14 @@
       <DependentUpon>FuncionarioListWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="Login.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\FornecedorFormWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\FornecedorListWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

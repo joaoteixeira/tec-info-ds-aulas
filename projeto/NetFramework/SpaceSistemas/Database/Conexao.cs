@@ -12,7 +12,7 @@ namespace SpaceSistemas.Database
     {
         private static string host = "localhost";
 
-        private static string port = "3308";
+        private static string port = "3306";
 
         private static string user = "root";
 
@@ -31,9 +31,9 @@ namespace SpaceSistemas.Database
                 connection = new MySqlConnection($"server={host};database={dbname};port={port};user={user};password={password}");
                 connection.Open();
 
-            } catch (Exception)
+            } catch (Exception e)
             {
-                throw;
+                throw e;
             }
         }
 

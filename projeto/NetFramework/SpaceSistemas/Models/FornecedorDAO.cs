@@ -29,9 +29,21 @@ namespace SpaceSistemas.Models
             throw new NotImplementedException();
         }
 
-        public void Insert(Fornecedor t)
+        public void Insert(Fornecedor fornecedor)
         {
-            throw new NotImplementedException();
+            var query = conn.Query();
+            query.CommandText = "INSERT INTO fornecedor VALUES (null, @razao_social, @nome_fantasia, @cnpj, @telefone, @representante, null)";
+
+            query.Parameters.AddWithValue("@razao_social", fornecedor.RazaoSocial);
+            query.Parameters.AddWithValue("@nome_fantasia", fornecedor.CNPJ);
+            query.Parameters.AddWithValue("@cnpj", fornecedor.CNPJ);
+            query.Parameters.AddWithValue("@telefone", fornecedor.Telefone);
+            query.Parameters.AddWithValue("@representante", fornecedor.Representante);
+
+            var result = query.ExecuteNonQuery();
+
+            if (result == 0)
+                throw new Exception("O registro não foi inserido. Verifique e tente novamente");
         }
 
         public List<Fornecedor> List()
@@ -52,6 +64,8 @@ namespace SpaceSistemas.Models
                         Id = reader.GetInt32("cod_forn"),
                         RazaoSocial = DAOHelper.GetString(reader, "razaosocial_forn"),
                         NomeFantasia = DAOHelper.GetString(reader, "nomefantasia_forn"),
+                        CNPJ = DAOHelper.GetString(reader, "cnpj_forn"),
+                        Telefone = DAOHelper.GetString(reader, "telefone_forn"),
                         Representante = DAOHelper.GetString(reader, "representante_forn")
                     });
                 }

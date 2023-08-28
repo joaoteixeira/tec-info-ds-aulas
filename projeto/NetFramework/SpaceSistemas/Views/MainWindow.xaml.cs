@@ -64,6 +64,10 @@ namespace SpaceSistemas.Views
                     window = new FuncionarioListWindow();
                     window.ShowDialog();
                     break;
+                case "MN_Fornecedor":
+                    window = new FornecedorListWindow();
+                    window.ShowDialog();
+                    break;
                 case "MN_Compra":
                     window = new CompraWindow();
                     window.ShowDialog();

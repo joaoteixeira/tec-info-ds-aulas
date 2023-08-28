@@ -32,6 +32,13 @@
                 </StackPanel>
             </Button>
 
+            <Button Margin="0 2" Height="50" Click="Menu_Button_Click" Name="MN_Fornecedor">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock FontSize="16" Padding="5 10">Forncecedores</TextBlock>
+                    <materialDesign:PackIcon Kind="AccountSupervisor" Width="28" Height="28" Margin="0 4" />
+                </StackPanel>
+            </Button>
+
             <Button Margin="0 2" Height="50">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock FontSize="14" Padding="10">Produtos</TextBlock>
