@@ -28,11 +28,18 @@ namespace SpaceSistemas.Views
 
         private void FornecedorListWindow_Loaded(object sender, RoutedEventArgs e)
         {
+            CarregarDados();
+        }
+
+        private void CarregarDados()
+        {
             try
             {
                 var fornecedorDAO = new FornecedorDAO();
                 dataGridFornecedores.ItemsSource = fornecedorDAO.List();
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 MessageBox.Show(ex.Message);
             }
         }
@@ -41,7 +48,9 @@ namespace SpaceSistemas.Views
         {
             var fornecedorSelecionado = dataGridFornecedores.SelectedItem as Fornecedor;
 
-            MessageBox.Show(fornecedorSelecionado.RazaoSocial);
+            var tela = new FornecedorFormWindow(fornecedorSelecionado.Id);
+            tela.ShowDialog();
+            CarregarDados();
         }
 
         private void Button_Delete_Click(object sender, RoutedEventArgs e)
