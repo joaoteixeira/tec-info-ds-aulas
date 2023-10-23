@@ -39,7 +39,7 @@
                 </StackPanel>
             </Button>
 
-            <Button Margin="0 2" Height="50">
+            <Button Margin="0 2" Height="50" Click="Menu_Button_Click" Name="MN_Produto">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock FontSize="14" Padding="10">Produtos</TextBlock>
                     <Image Source="/Imagens/produtos.png" Width="28" />

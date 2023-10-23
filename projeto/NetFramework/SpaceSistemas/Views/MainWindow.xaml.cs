@@ -72,6 +72,10 @@ namespace SpaceSistemas.Views
                     window = new CompraWindow();
                     window.ShowDialog();
                     break;
+                case "MN_Produto":
+                    window = new ProdutoFormWindow();
+                    window.ShowDialog();
+                    break;
             }
         }
     }

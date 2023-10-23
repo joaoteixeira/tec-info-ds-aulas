@@ -9,9 +9,13 @@ using MySql.Data.MySqlClient;
 
 namespace SpaceSistemas.Models
 {
-    class ProdutoDAO : IDAO<Produto>
+    class ProdutoDAO
     {
         private Conexao conn;
+
+        public string resultado;
+
+        public bool sucesso;
 
         public ProdutoDAO()
         {
@@ -28,9 +32,25 @@ namespace SpaceSistemas.Models
             throw new NotImplementedException();
         }
 
-        public void Insert(Produto t)
+        public string Insert(Produto produto)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var query = conn.Query();
+                query.CommandText = "CALL produto_inserir(@nome, @unidade, @valor)";
+
+                query.Parameters.AddWithValue("@nome", produto.Nome);
+                query.Parameters.AddWithValue("@unidade", produto.Unidade);
+                query.Parameters.AddWithValue("@valor", produto.ValorVenda);
+
+                var resultado = (string) query.ExecuteScalar();
+
+                return resultado;
+
+            } catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public List<Produto> List()

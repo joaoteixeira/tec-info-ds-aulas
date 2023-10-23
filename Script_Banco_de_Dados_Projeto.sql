@@ -101,3 +101,20 @@ INSERT INTO fornecedor VALUES (null, 'TROPICAL TECH LTDA', 'TROPICAL TECH', '01.
 INSERT INTO fornecedor VALUES (null, 'TECH MIX DISTRIBUIDORA LTDA', 'TECH MIX DISTRIBUIDORA', '01.123.567/0001-34', '(69) 99999-1010', 'Pedro Pereira', null);
 
 INSERT INTO usuario VALUE (null, 'joao', '123456', 1);
+
+
+DELIMITER $$ 
+CREATE PROCEDURE produto_inserir (nome VARCHAR(200), unidade INT, valor DECIMAL(15, 2))
+BEGIN
+	IF ((nome <> '' ) AND (unidade > 0) AND (valor > 0.00 )) THEN
+		INSERT INTO produto VALUES (NULL, nome, unidade, valor);
+		SELECT 'Produto cadastro com sucesso' AS Confirmação;
+	ELSE
+		SELECT 'Os campos obrigatórios devem ser preenchidos' AS Erro;
+	END IF;
+END;
+$$ 
+DELIMITER ;
+
+
+CALL produto_inserir('Teclado Mecânico - XBLSZ', 10, 0);

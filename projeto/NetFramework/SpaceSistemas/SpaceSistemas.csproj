@@ -164,6 +164,9 @@
     <Compile Include="Views\FuncionarioListWindow.xaml.cs">
       <DependentUpon>FuncionarioListWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ProdutoFormWindow.xaml.cs">
+      <DependentUpon>ProdutoFormWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -204,6 +207,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\FuncionarioListWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProdutoFormWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
