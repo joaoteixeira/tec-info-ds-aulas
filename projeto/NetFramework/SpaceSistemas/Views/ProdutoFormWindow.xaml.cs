@@ -28,10 +28,9 @@ namespace SpaceSistemas.Views
 
                 MessageBox.Show(resultado);
                 
-
-                if (resultado == "Os campos obrigatórios devem ser preenchidos")
+                if (resultado != "Os campos obrigatórios devem ser preenchidos")
                 {
-                    MessageBox.Show("Erro");
+                    MessageBox.Show("Sucesso!");
                 }
 
             }
